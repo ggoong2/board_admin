@@ -1,0 +1,85 @@
+#slide_img{
+    
+    width: 500px;
+}
+.slide_img img{
+    width: 500px;
+}
+#my_modal1 img{
+    width: 500px;
+}
+/* .table table-bordered td,
+.table table-bordered th{
+    width: 700px;
+} */
+
+#slide_text{
+    align-content: center;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 50%; /* Full width */
+    height: 50%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */                          
+}
+
+
+/* #element_to_pop_up { 
+    background-color:#fff;
+    border-radius:15px;
+    color:#000;
+    display:none; 
+    padding:20px;
+    min-width:300px;
+    min-height: 500px;
+} */
+.b-close{
+    /* cursor:pointer; */
+    position:absolute;
+    right:10px;
+    top:5px;
+}
+.button {font-size:2em; cursor:pointer; position:fixed; left:50%; top:50%; display:inline-block; padding:5px; background-color:#222; color:#fff; font-weight:bold;}
+.button2 {font-size:2em; cursor:pointer; position:fixed; left:50%; top:40%; display:inline-block; padding:5px; background-color:#222; color:#fff; font-weight:bold;}
+
+.bt123{
+    bottom: 0;
+}
+
+/* .slide_body2{
+    display: flex;
+    width: 1200px;
+} */
+/* .supdate_button{
+    margin-left: 150px;
+    margin-top: 60px;
+    height: 600px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center ;
+
+} */
+#popup_open_btn2{
+    text-justify: center;
+    text-align: center;
+}
+
+#spopup_open_btn{
+    display: none;
+}
