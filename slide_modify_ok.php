@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/board/board/db.php";
+include $_SERVER['DOCUMENT_ROOT']."/board/db.php";
 
 $select1 = $_POST['view1'];
 $select2 = $_POST['view2'];

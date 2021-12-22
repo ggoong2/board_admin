@@ -46,7 +46,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            <a href="http://localhost/board_admin/index.php?page=portfolio_img">
+                            <a href="http://localhost/board_admin/portfolio_img.php">
                             포트폴리오 관리
                             </a>    
                         </div>

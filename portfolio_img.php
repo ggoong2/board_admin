@@ -22,7 +22,7 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
-    <link href="css/index.css" rel="stylesheet" type="text/css">
+    
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- <link href="css/sb-admin-2.min.css" rel="stylesheet"> -->
@@ -33,7 +33,7 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
+        <link href="css/index.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     
 
@@ -183,6 +183,9 @@
                 </nav>
                 <!-- End of Topbar -->
 <!-- //--------------------------------------------------------------------------------------------------------- -->
+<div id="write_btn">
+            <a href="write.php"><button class="wrbtn">글쓰기</button></a>
+</div>
 <div class="card shadow mb-4">
             <!-- <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -196,13 +199,15 @@
                                 <th>슬라이드 이미지</th>
                                 <th>수정날짜</th>
                                 <th>순서</th>
+                                <th>순서이동</th>
                                 <th>수정하기</th>
+                                <th>삭제</th>
                             </tr>
                         </thead>   
                         <tbody>
                             <?php
                                 $index = 0;
-                                $sql = mq("select * from board");
+                                $sql = mq("select * from board ORDER BY view DESC");
                                 // $sql2 = mq("select * from board ORDER BY idx DESC LIMIT $start_num, $list");
                                 while($board = $sql->fetch_array()){
                                     if($board["file"] == null){
@@ -211,34 +216,60 @@
                                         // echo "<div class = 'slide_img'><a href='read.php?idx=$src2';><img src=/board/img/noimg.png></a></div>";
 
                                     } else {
+                                        $idx = $board["idx"];
                                         $src = $board["file"];
-                                        $src2 = $board["content"];
+                                        $src2 = $board["history"];
                                         $src3 = $board["view"];
                                         $index++;
                                        
                                         echo "<tr><th>
-                                                <img id = 'pf_img' src=/board/upload/$src>
+                                                <img id = 'pf_img' src= upload/$src>
                                                 </th>"; 
                                         echo "<th id=slide_text>$src2</th>";
-                                        echo "<th id=slide_text>$src3</th>";
+                                        echo "<th id=slide_text>$index</th>";
+                                        echo "<th id=slide_text>
+                                                <form action='pf_order_ok.php?idx=$idx' method='post' enctype='multipart/form-data'>
+                                                <input type='text' name='order' placeholder='위치' id='orderbtn'>
+                                                <button type='submit'>이동하기</button>
+                                                </form>
+                                            </th>";
                                         echo "<th id=slide_text>
                                                     <a href='#' class='btn btn-primary btn-icon-split btn-lg'>
+                                                    <span id='popup_open_btn$index'>
                                                     <span class='icon text-white-50'>
                                                         <i class='fas fa-flag'></i>
                                                     </span>
-                                                    <span id='popup_open_btn$index'> 이미지 수정하기 </span>
+                                                    수정
+                                                    </span>
                                                     </a>
-                                                </th></tr>";
-                                        ?>
+                                                </th>";
+
+                                        // $ref = "delete_ok.php?idx=$idx";
+                                        echo "<th id=slide_text>
+                                            <a href='#' class='btn btn-primary btn-icon-split btn-lg' onclick= 'del$index();'>
+                                            <span id='popup_open_btn$index'>
+                                            
+                                            삭제  
+                                            </span>
+                                            <script type='text/javascript'>
+                                                function del$index() {
+                                                if(confirm('정말 삭제하시겠습니까?'))
+                                                    location = 'delete_ok.php?idx=$idx';
+                                                    delete_ok.php();
+                                                }
+                                            </script>
+                                            </a>
+                                        </th></tr>";
+                            ?>
                                     <?php
                                     echo
                                        "<div id='my_modal$index'>
-                                                <form action='pf_modify_ok.php?view=$index' method='post' enctype='multipart/form-data'>
+                                                <form action='pf_modify_ok.php?idx=$idx' method='post' enctype='multipart/form-data'>
                                                     <div class='modal-header'>
-                                                        <h2>$index 번 이미지 바꾸기</h2>
+                                                        <h2> 이미지 바꾸기</h2>
                                                     </div>
                                                     <div class='modal-body'>
-                                                        <div class = 'slide_img'><img src=/board/upload/$src></div>
+                                                        <div class = 'mpf_img'><img src= upload/$src></div>
                                                             <input type='file' name='b_file'/>
                                                     </div>
                                                     <div class='modal-footer'>
@@ -264,7 +295,11 @@
                                                                 border-radius: 3px;
                                                             }
                                                             #my_modal$index img{
-                                                                width: 500px;
+                                                                min-width: 400px;
+                                                                min-height: 500px;
+                                                                height: 500px;
+                                                                width: 400px;
+                                                                object-fit: contain;
                                                             }
                                                             #my_modal$index .modal_close_btn{
                                                                 top: 10px;

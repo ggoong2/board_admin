@@ -1,6 +1,6 @@
 <?php
 //db연결
-include $_SERVER['DOCUMENT_ROOT']."/board/board/db.php";
+include $_SERVER['DOCUMENT_ROOT']."/board/db.php";
 $query = "SELECT * FROM slide_file ORDER BY idx DESC";
 $result = mysqli_query($db, $query);
 ?>

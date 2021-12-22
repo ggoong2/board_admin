@@ -1,4 +1,4 @@
-<?php include $_SERVER['DOCUMENT_ROOT']."/board/board/db.php";?>
+<?php include $_SERVER['DOCUMENT_ROOT']."/board/db.php";?>
 <?php
     session_start(); 
     if(!isset($_SESSION['userid'])) {

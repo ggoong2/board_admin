@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/board/board/db.php";
+include $_SERVER['DOCUMENT_ROOT']."/board/db.php";
 
 
 $view = $_GET['view'];
@@ -10,7 +10,7 @@ session_start();
 $user_id = $_SESSION['userid'];
 $date =  date("Y-m-d H:i:s");
 $content = $user_id.$date;
-echo $content;
+// echo $content;
 
 $oldfilename = $slide_file['file'];
 $filename = $_FILES['b_file']['name'];
@@ -38,7 +38,7 @@ if($oldfilename==true && $filename==true){
     move_uploaded_file($_FILES['b_file']['tmp_name'],$folder);
     $sql = mq("update slide_file set content='".$content."',file='".$filename."' where view='".$view."'");
     
-    echo "<script>alert('$oldfolder.$oldfolder');</script>";
+    // echo "<script>alert('$oldfolder.$oldfolder');</script>";
     echo "<script>alert('수정되었습니다.');</script>";
 } else {
     // $sql = mq("update slide_file set name='".$username."',pw='".$userpw."',title='".$title."',content='".$content."' where idx='".$bno."'"); 

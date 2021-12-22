@@ -1,5 +1,5 @@
 <?php 
-    include $_SERVER['DOCUMENT_ROOT']."/board/board/db.php";    
+    include $_SERVER['DOCUMENT_ROOT']."/board/db.php";    
 
     $id=$_POST['id'];
     $pw=$_POST['pw'];
