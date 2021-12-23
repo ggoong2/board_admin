@@ -16,7 +16,7 @@ session_start();
 $user_id = $_SESSION['userid'];
 $date =  date("Y-m-d H:i:s");
 $history = $user_id.$date.'첫 작성';
-
+$date2 = date("Y-m-d");
 // $tmpfile =  $_FILES['b_file']['tmp_name'];
 // $o_name = $_FILES['b_file']['name'];
 $filename = $_FILES['b_file']['name'];
@@ -37,7 +37,7 @@ if($filename == true){
         $imageNameSlice = explode(".",$filename);
         $imageName = $imageNameSlice[0];
         $imageType = $imageNameSlice[1];
-        $newImage = chr(rand(97,122)).chr(rand(97,122)).$dates.rand(1,9).".".$imageType;
+        $newImage = chr(rand(97,122)).chr(rand(97,122)).'-'.$date2.'-'.rand(1,9).".".$imageType;
         $folder = "upload/".$newImage;
         move_uploaded_file($_FILES['b_file']['tmp_name'],$folder);
 

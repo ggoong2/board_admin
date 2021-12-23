@@ -183,19 +183,22 @@
                 </nav>
                 <!-- End of Topbar -->
 <!-- //--------------------------------------------------------------------------------------------------------- -->
-<div id="write_btn">
-            <a href="write.php"><button class="wrbtn">글쓰기</button></a>
-</div>
+<!-- <div id="write_btn">
+    <a href="write.php"><button class="wrbtn">글쓰기</button></a>
+</div> -->
+    <p class="mb-4">
+    <h1 class="h3 mb-2 text-gray-800"><a href="write.php" class="btn btn-dark" >Portfolio 추가하기</a></h1>
+    </p>
+<div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary"></h6>
+            </div>
 <div class="card shadow mb-4">
-            <!-- <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            </div> -->
-    <div class= slide_body2>        
+            
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" width="80%" cellspacing="0">
+                    <table class="table table-striped table-bordered table-hover" id="dataTable" width="80%" cellspacing="0">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>슬라이드 이미지</th>
                                 <th>수정날짜</th>
                                 <th>순서</th>
@@ -208,6 +211,9 @@
                             <?php
                                 $index = 0;
                                 $sql = mq("select * from board ORDER BY view DESC");
+                                $sql2 = mq("select count(*) from board");
+                                $maxrow = $sql2->fetch_array();
+                                $mx = $maxrow['count(*)'];
                                 // $sql2 = mq("select * from board ORDER BY idx DESC LIMIT $start_num, $list");
                                 while($board = $sql->fetch_array()){
                                     if($board["file"] == null){
@@ -222,19 +228,39 @@
                                         $src3 = $board["view"];
                                         $index++;
                                        
-                                        echo "<tr><th>
+                                        echo "<tr class='text-center'><th>
                                                 <img id = 'pf_img' src= upload/$src>
                                                 </th>"; 
                                         echo "<th id=slide_text>$src2</th>";
                                         echo "<th id=slide_text>$index</th>";
+
+                                        // 조건문 스크립트
+
+                                        
+
+
                                         echo "<th id=slide_text>
-                                                <form action='pf_order_ok.php?idx=$idx' method='post' enctype='multipart/form-data'>
-                                                <input type='text' name='order' placeholder='위치' id='orderbtn'>
-                                                <button type='submit'>이동하기</button>
+                                                <form action='pf_order_ok.php?idx=$idx' method='post' enctype='multipart/form-data' onsubmit='return validate$index();'>
+                                                <input type='text' name='order' placeholder='1 ~ $mx 까지 입력하세요' class='form-control bg-light border-0 small' id='orderbtn$index'>
+                                                <input type='submit' class='btn btn-dark' value='이동'>
                                                 </form>
                                             </th>";
+
+                                        echo "<script>
+                                        
+                                        function validate$index() {  
+                                            var ordercheck = document.getElementById('orderbtn$index').value;
+                                            if (ordercheck < 1 || ordercheck > $mx ) {
+                                            alert('1 - $mx 사이를 입력하세요');
+                                            return false;
+                                            } 
+                                            return true;
+                                        }
+                                        </script>";
+
+
                                         echo "<th id=slide_text>
-                                                    <a href='#' class='btn btn-primary btn-icon-split btn-lg'>
+                                                    <a href='#' class='btn btn-dark'>
                                                     <span id='popup_open_btn$index'>
                                                     <span class='icon text-white-50'>
                                                         <i class='fas fa-flag'></i>
@@ -246,9 +272,9 @@
 
                                         // $ref = "delete_ok.php?idx=$idx";
                                         echo "<th id=slide_text>
-                                            <a href='#' class='btn btn-primary btn-icon-split btn-lg' onclick= 'del$index();'>
+                                            <a href='#' class='btn btn-dark' onclick= 'del$index();'>
+                                                <i class='fas fa-trash'></i>
                                             <span id='popup_open_btn$index'>
-                                            
                                             삭제  
                                             </span>
                                             <script type='text/javascript'>
@@ -270,11 +296,11 @@
                                                     </div>
                                                     <div class='modal-body'>
                                                         <div class = 'mpf_img'><img src= upload/$src></div>
-                                                            <input type='file' name='b_file'/>
+                                                            <input type='file' name='b_file' class='btn btn-dark'/>
                                                     </div>
                                                     <div class='modal-footer'>
                                                         <div class='bt_se'>
-                                                                <button type='submit'>수정하기</button>
+                                                                <button type='submit' class='btn btn-dark'>수정하기</button>
                                                         </div>
                                                         <div>
                                                             <a class='modal_close_btn'>닫기</a>
@@ -359,7 +385,7 @@
                         </tbody>
                     </table>
             </div>
-        </div>
+       
 
 </div>
 

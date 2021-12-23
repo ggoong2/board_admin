@@ -29,7 +29,7 @@ if($oldfilename==true && $filename==true){
     move_uploaded_file($_FILES['b_file']['tmp_name'],$folder);
     $sql = mq("update board set history='".$history."',file='".$newImage."' where idx = '".$idx."'");
     unlink("$oldfolder");
-    echo "<script>alert('{$oldfilename} .'이랑'. {$filename}');</script>";
+    // echo "<script>alert('{$oldfilename} .'이랑'. {$filename}');</script>";
     echo "<script>alert('수정되었습니다.');</script>";
 } else {
     // $sql = mq("update slide_file set name='".$username."',pw='".$userpw."',title='".$title."',content='".$content."' where idx='".$bno."'"); 

@@ -1,5 +1,7 @@
 #slide_img{
     width: 500px;
+    height: 300px;
+    object-fit: contain;
 }
 .slide_img img{
     height: 500px;
@@ -8,6 +10,7 @@
 #pf_img{
     height: 100px;
     width: 200px;
+    object-fit: contain;
 }
 /* .mpf_img {
     height:300px;
@@ -91,6 +94,6 @@
     display: "";
 }
 
-#orderbtn{
-    width: 50px;
+.orderbtn{
+    width: 80px;
 }

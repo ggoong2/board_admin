@@ -12,10 +12,9 @@ $board = $sql->fetch_array();
 // echo $content;
 $oldfilename = $board['file'];
 if($idx==true){
-    $oldfolder = "/board/upload/".$oldfilename;
+    $oldfolder = "upload/".$oldfilename;
     unlink("$oldfolder");
     $sql = mq("delete from board where idx = '".$idx."'");
-
     echo "<script>alert('$oldfilename 사진이 삭제되었습니다.');</script>";
 } else {
     // $sql = mq("update slide_file set name='".$username."',pw='".$userpw."',title='".$title."',content='".$content."' where idx='".$bno."'"); 

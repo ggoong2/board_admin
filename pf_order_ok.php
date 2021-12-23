@@ -21,7 +21,6 @@ $user_id = $_SESSION['userid'];
 $date =  date("Y-m-d H:i:s");
 $history = $user_id.$date.'수정';
 
-echo "<script>alert('$newview...$bno...$oldview...$oldidx');</script>";
 if($oldview != $newview){
     // $oldfolder = "upload/".$oldfilename;
     // $imageNameSlice = explode(".",$filename);
@@ -35,8 +34,8 @@ if($oldview != $newview){
     // move_uploaded_file($_FILES['b_file']['tmp_name'],$folder);
     // $sql = mq("update board set history='".$history."',file='".$newImage."' where idx = '".$idx."'");
     // unlink("$oldfolder");
-    echo "<script>alert('???.');</script>";
-    echo "<script>alert('$oldview .'이랑'. $newview');</script>";
+    // echo "<script>alert('???.');</script>";
+    // echo "<script>alert('$oldview .'이랑'. $newview');</script>";
     echo "<script>alert('수정되었습니다.');</script>";
 } else {
     // $sql = mq("update slide_file set name='".$username."',pw='".$userpw."',title='".$title."',content='".$content."' where idx='".$bno."'"); 

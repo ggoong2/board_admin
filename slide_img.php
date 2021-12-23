@@ -394,6 +394,7 @@ function doOpenCheck(chk){
     }
     
     #my_modal1 img,#my_modal2 img,#my_modal3 img{
+        object-fit: contain;
         width: 500px;
     }
 
